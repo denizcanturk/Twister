@@ -20,7 +20,7 @@ int main(){
         }
 
         twist();
-    }while(x !='N');
+    }while(true);
     return 0;
 }
 
