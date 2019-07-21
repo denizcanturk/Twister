@@ -1,12 +1,29 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <vector>
 
 using namespace std;
 void twist();
 
 int main(){
     char reply{'Y'},x{};
+    string gamer{};
+    int sayi{}, cntr{0};
+    vector <string> gamers{};
+    cout << "Kaç kisi ile oynayacaksınız? ";
+    cin >> sayi;
+    for (int i =1; i<=sayi; i++)
+    {
+        cout << "Oyuncu " << i << " : ";
+        cin >> gamer;
+        gamers.push_back(gamer);
+    }
+
+    //string n = string(10,'*');
+
+
+
     do {
         cout << "Carki simdi cevirmek ister misin? <E/H> : ";
         cin >> reply;
@@ -19,15 +36,16 @@ int main(){
             break;
         }
 
+        cout << "Sıradaki Oyuncu : " << gamers.at(cntr) << endl<< endl;
+        cntr++;
+        if (cntr == gamers.size())
+            cntr = 0;
         twist();
     }while(true);
     return 0;
 }
 
 void twist(){
-    // Some definitions to use later on...
-    // Bulut havaya kaldır
-    // T : Ceza verme...
 
     string elAyak{}, renk{};
 
@@ -45,11 +63,6 @@ void twist(){
         elAyak = "Sag Ayak";
     else if (random == 4)
         elAyak="Sol Ayak";
-    /* else if (random == 5)
-        elAyak = "Bulut";
-    else if (random == 6)
-        elAyak = " >:) Cezaaaa... >:) ";*/
-    // Now switching for Colors
 
     if ((random < 5 )){
         max = 4;
@@ -64,9 +77,11 @@ void twist(){
             renk = "Yesil";
         }
 
-        cout << "***************************************" <<endl << endl;
-        cout << elAyak << " -->> " << renk << endl << endl;
-        cout << "***************************************" <<endl<< endl;
+        cout << string(elAyak.length()+renk.length()+8, '*') <<endl;
+        cout << "*" << string(elAyak.length()+renk.length()+6, ' ')<< "*" <<endl;
+        cout << " " << elAyak << " -->> " << renk << endl;
+        cout << "*" << string(elAyak.length()+renk.length()+6, ' ')<< "*" <<endl;
+        cout << string(elAyak.length()+renk.length()+8, '*') <<endl<< endl;
     }
     else if (random == 5){
         cout << "********************************************************************" <<endl << endl;
